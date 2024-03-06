@@ -1,3 +1,5 @@
+# 백준 10828
+
 import sys
 n = int(sys.stdin.readline()) # input()은 시간초과 발생가능
 
