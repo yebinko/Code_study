@@ -1,0 +1,29 @@
+import sys
+from collections import deque
+
+t = int(sys.stdin.readline())
+
+for _ in range(t):
+	n,m = map(int, sys.stdin.readline().split())
+	imp = list(map(int, sys.stdin.readline().split()))
+	que = deque()
+	
+	count = 0
+	
+	for idx, i in enumerate(imp):
+		que.append((idx, i)) # (0,1), (1,2), (2,3), (3,4)
+		
+	imp.sort(reverse=True) # [4 3 2 1]
+	
+	while que:
+		idx, i = que.popleft()
+		
+		if i == imp[0]:
+			count += 1
+			imp.pop(0)
+			if idx == m:
+				print(count)
+				break
+				
+		else:
+			que.append((idx, i))
