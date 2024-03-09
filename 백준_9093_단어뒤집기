@@ -1,0 +1,31 @@
+import sys
+from collections import deque
+
+t = int(sys.stdin.readline())
+
+for _ in range(t):
+    p = sys.stdin.readline().strip()
+    list = p.split()
+
+    que = deque()
+
+    for i in list:
+        que.append(i)
+
+    final = []
+
+    for j in range(len(que)):
+        que2 = deque()
+        for i in que[j]:
+            que2.append(i)
+            blank = []
+        while que2:
+            blank.append(que2.pop())
+        
+        final.append(blank)
+
+    answer = []
+    for i in final:
+        answer.append(''.join(i))
+    print(' '.join(answer))
+                
