@@ -1,0 +1,25 @@
+def solution(priorities, location):
+    
+    
+    from collections import deque
+    que = deque()
+    
+    for p in enumerate(priorities):
+        que.append(p)
+    
+    priorities.sort(reverse = True) # priorities를 정렬해서 que와 비교해준다
+    
+    answer = 1
+    while que:
+        idx, q = que.popleft()
+        if q == priorities[0]:
+            if idx == location:
+                return answer
+            else:
+                answer += 1
+                priorities.pop(0) # 대상이 아닌 경우, priorities의 요소 삭제
+        else:
+            que.append((idx,q))
+                
+    
+    return answer
