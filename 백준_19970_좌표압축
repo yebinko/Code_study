@@ -1,0 +1,10 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+array = list(map(int, input().split()))
+
+sorted_array = sorted(list(set(array)))
+dic = {sorted_array[i] : i for i in range(len(sorted_array))}
+for i in array:
+    print(dic[i], end= ' ')
