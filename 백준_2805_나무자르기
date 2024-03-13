@@ -1,0 +1,20 @@
+import sys
+n,m = map(int, sys.stdin.readline().rstrip().split())
+array = list(map(int, sys.stdin.readline().rstrip().split()))
+
+start = 1
+end = max(array)
+
+while start <= end:
+    mid = (start + end) // 2
+    take_home = 0
+    for i in array:
+        if i - mid >= 0:
+            take_home += (i - mid)
+        
+    if take_home >= m: # 가져갈 수 있는게 적다 -> 더 많이 베어야 한다 -> mid 값을 낮춰야 한다
+        start = mid + 1
+    else:
+        end = mid - 1
+
+print(end)
