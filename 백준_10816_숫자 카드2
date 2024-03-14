@@ -1,0 +1,53 @@
+# 풀이 (dictionary만 활용)
+import sys
+input = sys.stdin.readline
+
+n = int(input().rstrip())
+array = sorted(list(map(int, input().rstrip().split())))
+m = int(input().rstrip())
+obj = list(map(int, input().rstrip().split()))
+
+dic = {}
+for n in array:
+    if n in dic:
+        dic[n] += 1
+    else:
+        dic[n] = 1
+
+for m in obj:
+    if m in dic:
+        print(dic[m], end = ' ')
+    else:
+        print(0, end = ' ')
+
+
+# 다른 풀이 (이진탐색 활용)
+
+import sys
+input = sys.stdin.readline
+
+n = int(input().rstrip())
+array = sorted(list(map(int, input().rstrip().split())))
+m = int(input().rstrip())
+obj = list(map(int, input().rstrip().split()))
+
+dic = {}
+for n in array:
+    if n in dic:
+        dic[n] += 1
+    else:
+        dic[n] = 1
+
+def binary(m, array, start, end):
+    if start > end:
+        return 0
+    mid = (start + end) // 2
+    if m == array[mid]:
+        return dic[m]
+    elif m < array[mid]:
+        return binary(m, array, start, mid-1)
+    else:
+        return binary(m, array, mid+1, end)
+    
+for m in obj:
+    print(binary(m, array, 0, len(array)-1), end = ' ')
