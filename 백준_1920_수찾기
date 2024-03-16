@@ -1,0 +1,26 @@
+import sys
+
+n = int(input())
+n_list = sorted(list(map(int, input().split())))
+m = int(input())
+m_list = list(map(int, input().split()))
+
+for m in m_list:
+    start = 0
+    end = n-1
+
+    while start <= end:
+        mid = (start+end) //2
+        if m > n_list[mid]:
+            start = mid + 1
+        elif m < n_list[mid]:
+            end = mid - 1
+        else:
+            start = mid
+            end = mid
+            break
+
+    if start == mid and end == mid:
+        print(1)
+    else:
+        print(0)
